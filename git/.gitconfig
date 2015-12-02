@@ -1,0 +1,33 @@
+[alias]
+	hist = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+  # Evite lors d'un pull d'avoir une erreur de suivi de la branche. Configure le suivi par rapport au nom local et distant.
+	set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+
+[user]
+	name = Ludovic Rouleau
+
+[color]
+	ui = auto
+        diff = auto
+        status = auto
+        branch = auto
+
+[core]
+	editor = gedit
+
+[pull]
+	# Garantit que tous mes pulls feront un rebase plutôt qu'un merge
+	# === Historique clean et garde les merges.
+	# rebase = preserve
+	# Pour les version de git >= 1.7.9 et un tronc "plat"
+	# rebase = true
+
+[push]
+	# M'évite de me faire gronder par git push, sous prétexte que j'ai encore une branche locale trackée dans un coin 
+	# dont je ne m'occupe plus et qui est en retard sur le remote, lorsque je pushe depuis une autre.
+	default = upstream
+
+[branch]
+	# Version de git < 1.7.9 pour appliquer par défaut l'option --rebase true sur toutes  les nouvelles branches
+	# inutile si rebase = preserve
+	autosetuprebase = always
