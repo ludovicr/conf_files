@@ -1,9 +1,11 @@
 [alias]
+	#hist = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset' --since='7 days ago'
 	hist = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-  # Evite lors d'un pull d'avoir une erreur de suivi de la branche. Configure le suivi par rapport au nom local et distant.
+  	# Evite lors d'un pull d'avoir une erreur de suivi de la branche. Configure le suivi par rapport au nom local et distant.
 	set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
 
 [user]
+	email = ludovic.rouleau@soprasteria.com
 	name = Ludovic Rouleau
 
 [color]
@@ -14,6 +16,7 @@
 
 [core]
 	editor = gedit
+	autocrlf = input
 
 [pull]
 	# Garantit que tous mes pulls feront un rebase plutôt qu'un merge
@@ -31,3 +34,5 @@
 	# Version de git < 1.7.9 pour appliquer par défaut l'option --rebase true sur toutes  les nouvelles branches
 	# inutile si rebase = preserve
 	autosetuprebase = always
+[merge]
+	tool = meld
